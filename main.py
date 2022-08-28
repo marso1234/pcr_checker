@@ -1,7 +1,7 @@
 from character_pool import character_pool
 
-filename = 'C:/coding_projects/python_projects/pcr_checker/team_list.txt'
-outputname = 'C:/coding_projects/python_projects/pcr_checker/output.txt'
+filename = 'team_list.txt'
+outputname = 'output.txt'
 
 #Empty
 with open(outputname, 'w',encoding="utf-8") as output_file:
@@ -10,6 +10,12 @@ with open(outputname, 'w',encoding="utf-8") as output_file:
 with open(filename, 'r',encoding="utf-8") as input_file:
     lines = input_file.readlines()
     lines = [i.strip() for i in lines]
+    lack_characters = lines[0].split(':')[1].split(',')
+    lines = lines[4:]
+    for i in range(len(lines)):
+        for j in range(5):
+            if lines[i][j] in lack_characters:
+                lines[i][j] = lines[i][j] + '*'
 
 success_cp = []
 
